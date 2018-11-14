@@ -9,6 +9,7 @@ project(pozyx_ros)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -103,7 +104,9 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES pozyx_ros
-#  CATKIN_DEPENDS rospy
+  CATKIN_DEPENDS 
+    rospy
+    message_runtime
 #  DEPENDS system_lib
 )
 
