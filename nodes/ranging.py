@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
+
+from __future__ import division
 
 import rospy
 import pypozyx
@@ -10,9 +12,15 @@ def pozyx_range():
     rospy.init_node('range_pub')
 
     try:
-        pozyx = pypozyx.PozyxSerial(pypozyx.get_first_pozyx_serial_port())
+        serial_port = pypozyx.get_first_pozyx_serial_port()
+
+        if serial_port == None:
+            rospy.loginfo("Pozyx not connected")
+            return
+
+        pozyx = pypozyx.PozyxSerial(serial_port)
     except:
-        rospy.loginfo("Pozyx not connected")
+        rospy.loginfo("Could not connect to pozyx")
         return
 
     # get network id of connected pozyx
@@ -33,18 +41,18 @@ def pozyx_range():
 
     pozyx.getDeviceIds(devices)
 
-    for i in range(devices_size):
+    for i in range(devices_size[0]):
         rospy.loginfo("Found pozyx device with the id {}".format(pypozyx.NetworkID(devices[i])))        
 
     # publish data
     while not rospy.is_shutdown():
-        for i in range(devices_size):
+        for i in range(devices_size[0]):
             device_range = pypozyx.DeviceRange()
             remote_id = pypozyx.NetworkID(devices[i])
 
-            if pozyx.doRanging(self_id, device_range, remote_id):
+            if pozyx.doRanging(self_id[0], device_range, remote_id[0]):
                 h = Header()
-                h.stamp = device_range[0]
+                h.stamp = rospy.Time.from_sec(device_range[0] / 1000)
                 
                 pub.publish(h, remote_id[0], device_range[1], device_range[2])
             else:
