@@ -8,9 +8,9 @@ project(pozyx_ros)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  rospy
-  message_generation
-  std_msgs
+	rospy
+	message_generation
+	std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -48,8 +48,8 @@ catkin_python_setup()
 
 ## Generate messages in the 'msg' folder
 add_message_files(
-  FILES
-    DeviceRange.msg
+	FILES
+		DeviceRange.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -68,8 +68,8 @@ add_message_files(
 
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
-  DEPENDENCIES
-    std_msgs  # Or other packages containing msgs
+	DEPENDENCIES
+		std_msgs  # Or other packages containing msgs
 )
 
 ################################################
@@ -103,11 +103,11 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-  LIBRARIES pozyx_ros
-  CATKIN_DEPENDS 
-    rospy
-    message_runtime
-    std_msgs
+	LIBRARIES pozyx_ros
+	CATKIN_DEPENDS 
+		rospy
+		message_runtime
+		std_msgs
 #  DEPENDS system_lib
 )
 
@@ -119,7 +119,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-  ${catkin_INCLUDE_DIRS}
+	${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
