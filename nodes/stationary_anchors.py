@@ -67,13 +67,13 @@ class StationaryAnchors(object):
 
 if __name__ == "__main__":
 	anchors = [
-		pypozyx.DeviceCoordinates(0x02, 0, pypozyx.Coordinates(0, 0, 0)),
-		pypozyx.DeviceCoordinates(0x03, 0, pypozyx.Coordinates(0, 0, 0)),
-		pypozyx.DeviceCoordinates(0x04, 0, pypozyx.Coordinates(0, 0, 0)),
-		pypozyx.DeviceCoordinates(0x05, 0, pypozyx.Coordinates(0, 0, 0))
+		pypozyx.DeviceCoordinates(0x971a, 0, pypozyx.Coordinates(0.05, -0.035, 0.03)),
+		pypozyx.DeviceCoordinates(0x972d, 0, pypozyx.Coordinates(0.05, -0.525, 0.03)),
+		pypozyx.DeviceCoordinates(0x9751, 0, pypozyx.Coordinates(-0.02, -0.035, -0.05)),
+		pypozyx.DeviceCoordinates(0x9733, 0, pypozyx.Coordinates(1.5, -0.035, 0.03))
 	]
 
-	tag = pypozyx.DeviceCoordinates(0x01, 0, pypozyx.Coordinates(0, 0, 0))
+	tag = pypozyx.DeviceCoordinates(0x671d, 0, pypozyx.Coordinates(0, 0, 0))
 
 	stationaryAnchors = StationaryAnchors(anchors, tag)
 
